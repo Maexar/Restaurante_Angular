@@ -1,0 +1,116 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">Restaurante · Curitiba · Desde 2012</span>
+      <h1>Alta gastronomia,<br>servida com alma.</h1>
+      <p class="hero__lead">
+        O Âmbar une técnica de cozinha contemporânea a ingredientes de produtores locais,
+        em um salão pensado para conversas longas e pratos que merecem atenção.
+      </p>
+      <div class="hero__actions">
+        <a routerLink="/reservas" class="btn btn--primary">
+          Reservar mesa
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a routerLink="/menu" class="btn btn--ghost">Ver menu completo</a>
+      </div>
+    </div>
+
+    <aside class="hero__ticket" aria-label="Sugestões do chef para hoje">
+      <div class="hero__ticket-inner">
+        <span class="eyebrow">Cardápio de hoje</span>
+        <ul class="hero__ticket-list">
+          @for (item of dailyMenu; track item.name) {
+            <li class="leader-row">
+              <span class="leader-row__label">{{ item.name }}</span>
+              <span class="leader-row__dots"></span>
+              <span class="leader-row__value">R$ {{ item.price }}</span>
+            </li>
+          }
+        </ul>
+        <span class="hero__ticket-footnote">Sugestão do chef, sujeita à disponibilidade</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow" style="justify-content:center">Por que o Âmbar</span>
+      <h2>Três princípios guiam cada prato que sai da cozinha</h2>
+    </div>
+
+    <div class="pillars">
+      @for (pillar of pillars; track pillar.title) {
+        <div class="pillar">
+          <div class="pillar__icon">
+            @switch (pillar.icon) {
+              @case ('leaf') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 20A7 7 0 0 1 4 13c0-6 7-11 15-11 0 8-5 15-11 15z"/>
+                  <path d="M4 13c4 0 8-2 11-5"/>
+                </svg>
+              }
+              @case ('flame') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8.5 14.5A4.5 4.5 0 0 0 13 19a4.5 4.5 0 0 0 4.5-4.5c0-2-1-3.5-2-5-1 1-1.5 2-1.5 2S13 8 10 5c0 3-2 4.5-2 4.5S6 11 6 13a4.5 4.5 0 0 0 2.5 1.5z"/>
+                </svg>
+              }
+              @case ('hand') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8a2 2 0 1 1 4 0v5a7 7 0 0 1-7 7h-2a7 7 0 0 1-6-3.4L3.5 12a1.7 1.7 0 0 1 2.9-1.7L8 12.5V4a2 2 0 1 1 4 0v6M12 4v6M16 6v6"/>
+                </svg>
+              }
+            }
+          </div>
+          <h3>{{ pillar.title }}</h3>
+          <p>{{ pillar.text }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- PRATOS EM DESTAQUE -->
+<section class="section section--tight" style="background:var(--parchment-soft)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Pratos em destaque</span>
+      <h2>Uma pequena amostra do cardápio</h2>
+    </div>
+
+    <div class="featured-grid">
+      @for (dish of featured; track dish.name) {
+        <article class="featured-card">
+          <span class="badge badge--stone">{{ dish.category }}</span>
+          <div class="leader-row featured-card__title-row">
+            <span class="leader-row__label">{{ dish.name }}</span>
+            <span class="leader-row__dots"></span>
+            <span class="leader-row__value">R$ {{ dish.price }}</span>
+          </div>
+          <p>{{ dish.description }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="featured-more">
+      <a routerLink="/menu" class="btn btn--outline">Ver cardápio completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section--dark cta">
+  <div class="container cta__inner">
+    <div>
+      <h2>Sua mesa está a um clique de distância</h2>
+      <p>Reservas para hoje até 30 dias à frente, com confirmação imediata.</p>
+    </div>
+    <a routerLink="/reservas" class="btn btn--primary">Reservar agora</a>
+  </div>
+</section>

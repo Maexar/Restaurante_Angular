@@ -1,0 +1,39 @@
+<header class="navbar">
+  <div class="navbar__bar container">
+    <a routerLink="/" class="navbar__brand" (click)="close()">
+      <span class="navbar__brand-mark">A</span>
+      <span class="navbar__brand-text">Âmbar</span>
+    </a>
+
+    <nav class="navbar__links" [class.navbar__links--open]="isOpen()">
+      @for (link of links; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          (click)="close()">
+          {{ link.label }}
+        </a>
+      }
+      <a routerLink="/reservas" class="navbar__cta" (click)="close()">Reservar mesa</a>
+    </nav>
+
+    <button
+      type="button"
+      class="navbar__toggle"
+      [class.is-open]="isOpen()"
+      (click)="toggle()"
+      [attr.aria-expanded]="isOpen()"
+      aria-label="Abrir menu de navegação">
+      @if (!isOpen()) {
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      } @else {
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      }
+    </button>
+  </div>
+</header>

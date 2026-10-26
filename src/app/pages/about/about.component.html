@@ -1,0 +1,56 @@
+<section class="section section--tight about-hero">
+  <div class="container about-hero__grid">
+    <div>
+      <span class="eyebrow">Sobre o Âmbar</span>
+      <h1>Uma cozinha que não tem pressa</h1>
+    </div>
+    <div class="about-hero__lead">
+      <p>
+        <span class="about-hero__dropcap">O</span>Âmbar abriu as portas em 2012, num pequeno salão de esquina em
+        Curitiba, com a ideia simples de servir comida honesta em um ritmo humano. Mais de dez anos depois,
+        o endereço mudou, mas o princípio continua: cozinhar com o que a estação oferece e servir com atenção
+        real a quem está à mesa.
+      </p>
+      <p>
+        Hoje somos uma equipe pequena, todos os dias na cozinha e no salão, tratando cada reserva como
+        um convite — não como uma transação.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight" style="background:var(--parchment-soft)">
+  <div class="container">
+    <div class="values-grid">
+      @for (v of values; track v.title) {
+        <div class="value-card">
+          <span class="value-card__index">{{ v.title }}</span>
+          <p>{{ v.text }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container about-bottom">
+    <div class="about-bottom__quote">
+      <span class="quote-mark">&ldquo;</span>
+      <p>Bom serviço não é sobre formalidade. É sobre alguém perceber o que você precisa antes de você pedir.</p>
+      <span class="text-stone about-bottom__author">— Equipe de sala do Âmbar</span>
+    </div>
+
+    <div class="ticket about-hours">
+      <span class="eyebrow">Horário de funcionamento</span>
+      <ul>
+        @for (h of hours; track h.day) {
+          <li class="leader-row">
+            <span class="leader-row__label">{{ h.day }}</span>
+            <span class="leader-row__dots"></span>
+            <span class="leader-row__value">{{ h.time }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

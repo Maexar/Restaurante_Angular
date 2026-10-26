@@ -1,0 +1,49 @@
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__col footer__brand">
+      <div class="footer__mark">
+        <span class="footer__mark-glyph">A</span>
+        <span class="footer__mark-text">Âmbar</span>
+      </div>
+      <p>Cozinha autoral servida em um salão que preserva o ritmo de um bom jantar: sem pressa, com atenção aos detalhes.</p>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__title">Navegação</h4>
+      <ul class="footer__links">
+        <li><a routerLink="/menu">Menu</a></li>
+        <li><a routerLink="/reservas">Reservas</a></li>
+        <li><a routerLink="/sobre">Sobre o Âmbar</a></li>
+        <li><a routerLink="/contato">Contato</a></li>
+        <li><a routerLink="/dashboard">Painel operacional</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__title">Contato</h4>
+      <ul class="footer__links">
+        <li>Rua das Araucárias, 482 — Curitiba, PR</li>
+        <li>(41) 3234-5678</li>
+        <li>contato&#64;ambarrestaurante.com.br</li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__title">Horário</h4>
+      <ul class="footer__hours">
+        @for (h of hours; track h.day) {
+          <li class="leader-row">
+            <span class="leader-row__label">{{ h.day }}</span>
+            <span class="leader-row__dots"></span>
+            <span class="leader-row__value">{{ h.time }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom container">
+    <span>&copy; {{ year }} Âmbar Restaurante. Todos os direitos reservados.</span>
+    <span>Projeto acadêmico desenvolvido em Angular.</span>
+  </div>
+</footer>

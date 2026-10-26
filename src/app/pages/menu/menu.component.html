@@ -1,0 +1,49 @@
+<section class="section section--tight menu-page">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow" style="justify-content:center">Cardápio</span>
+      <h1>O que servimos no Âmbar</h1>
+      <p>Um menu enxuto, que muda com a estação. Todos os pratos podem ser adaptados mediante restrições alimentares — pergunte à equipe.</p>
+    </div>
+
+    <div class="menu-page__filters" role="tablist" aria-label="Filtrar por categoria">
+      @for (cat of categories; track cat) {
+        <button
+          type="button"
+          class="filter-pill"
+          [class.is-active]="active() === cat"
+          (click)="setActive(cat)">
+          {{ cat }}
+        </button>
+      }
+    </div>
+
+    <div class="menu-list">
+      @for (dish of filtered(); track dish.name) {
+        <article class="menu-item">
+          <div class="leader-row menu-item__title-row">
+            <span class="leader-row__label">{{ dish.name }}</span>
+            <span class="leader-row__dots"></span>
+            <span class="leader-row__value">R$ {{ dish.price }}</span>
+          </div>
+          <p class="menu-item__desc">{{ dish.description }}</p>
+          @if (dish.tags?.length) {
+            <div class="menu-item__tags">
+              @for (tag of dish.tags; track tag) {
+                <span class="badge badge--forest">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px">
+                    <path d="M11 20A7 7 0 0 1 4 13c0-6 7-11 15-11 0 8-5 15-11 15z"/>
+                    <path d="M4 13c4 0 8-2 11-5"/>
+                  </svg>
+                  {{ tagLabel[tag] }}
+                </span>
+              }
+            </div>
+          }
+        </article>
+      } @empty {
+        <p class="text-stone">Nenhum prato encontrado nessa categoria.</p>
+      }
+    </div>
+  </div>
+</section>

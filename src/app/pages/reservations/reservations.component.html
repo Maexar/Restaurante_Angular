@@ -1,0 +1,110 @@
+<section class="section section--tight res-page">
+  <div class="container res-page__grid">
+    <div class="res-page__main">
+      <span class="eyebrow">Reservas</span>
+      <h1>Reserve sua mesa</h1>
+      <p>Confirmação imediata para reservas de até 12 pessoas. Para grupos maiores, entre em contato pelo telefone.</p>
+
+      @if (!submitted()) {
+        <form class="res-form card" #resForm="ngForm" (ngSubmit)="onSubmit(resForm)" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Nome completo</label>
+              <input id="name" name="name" type="text" [(ngModel)]="name" required placeholder="Seu nome">
+            </div>
+            <div class="field">
+              <label for="phone">Telefone</label>
+              <input id="phone" name="phone" type="tel" [(ngModel)]="phone" required placeholder="(41) 90000-0000">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" [(ngModel)]="email" required placeholder="voce&#64;email.com">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="date">Data</label>
+              <input id="date" name="date" type="date" [(ngModel)]="date" required>
+            </div>
+            <div class="field">
+              <label>Número de pessoas</label>
+              <div class="stepper">
+                <button type="button" class="stepper__btn" (click)="decGuests()" aria-label="Diminuir número de pessoas">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14"/></svg>
+                </button>
+                <span class="stepper__value">{{ guests }}</span>
+                <button type="button" class="stepper__btn" (click)="incGuests()" aria-label="Aumentar número de pessoas">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Horário</label>
+            <div class="slots">
+              @for (slot of slots; track slot) {
+                <button
+                  type="button"
+                  class="slot"
+                  [class.is-active]="selectedSlot === slot"
+                  (click)="pickSlot(slot)">
+                  {{ slot }}
+                </button>
+              }
+            </div>
+            @if (!selectedSlot && resForm.submitted) {
+              <span class="field__error">Selecione um horário.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="notes">Observações (opcional)</label>
+            <textarea id="notes" name="notes" [(ngModel)]="notes" placeholder="Alergias, ocasião especial, preferência de mesa..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block">Confirmar reserva</button>
+        </form>
+      } @else {
+        <div class="ticket confirmation">
+          <span class="confirmation__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <path d="M22 4L12 14.01l-3-3"/>
+            </svg>
+          </span>
+          <h2>Reserva confirmada</h2>
+          <p class="text-stone">Enviamos os detalhes para {{ email }}. Aguardamos você no Âmbar.</p>
+
+          <ul class="confirmation__summary">
+            <li class="leader-row"><span class="leader-row__label">Nome</span><span class="leader-row__dots"></span><span class="leader-row__value">{{ name }}</span></li>
+            <li class="leader-row"><span class="leader-row__label">Data</span><span class="leader-row__dots"></span><span class="leader-row__value">{{ date }}</span></li>
+            <li class="leader-row"><span class="leader-row__label">Horário</span><span class="leader-row__dots"></span><span class="leader-row__value">{{ selectedSlot }}</span></li>
+            <li class="leader-row"><span class="leader-row__label">Pessoas</span><span class="leader-row__dots"></span><span class="leader-row__value">{{ guests }}</span></li>
+          </ul>
+
+          <button type="button" class="btn btn--outline" (click)="newReservation()">Fazer outra reserva</button>
+        </div>
+      }
+    </div>
+
+    <aside class="res-page__aside">
+      <div class="ticket aside-card">
+        <span class="eyebrow">Horário de funcionamento</span>
+        <ul class="aside-card__list">
+          <li class="leader-row"><span class="leader-row__label">Terça a sexta</span><span class="leader-row__dots"></span><span class="leader-row__value">18h–23h</span></li>
+          <li class="leader-row"><span class="leader-row__label">Sábado</span><span class="leader-row__dots"></span><span class="leader-row__value">12h–23h30</span></li>
+          <li class="leader-row"><span class="leader-row__label">Domingo</span><span class="leader-row__dots"></span><span class="leader-row__value">12h–17h</span></li>
+          <li class="leader-row"><span class="leader-row__label">Segunda</span><span class="leader-row__dots"></span><span class="leader-row__value">Fechado</span></li>
+        </ul>
+      </div>
+
+      <div class="ticket aside-card">
+        <span class="eyebrow">Política de reservas</span>
+        <p class="text-stone aside-card__text">Mesas são mantidas por 15 minutos após o horário reservado. Cancelamentos devem ser feitos com 2 horas de antecedência pelo telefone (41) 3234-5678.</p>
+      </div>
+    </aside>
+  </div>
+</section>

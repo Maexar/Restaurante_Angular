@@ -1,0 +1,153 @@
+:host {
+  display: block;
+}
+
+.res-page__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.res-page__main h1 {
+  margin-bottom: 10px;
+}
+
+.res-page__main > p {
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+
+.res-form {
+  padding: 32px;
+}
+
+.field__error {
+  font-size: 12px;
+  color: #a8492f;
+}
+
+/* stepper */
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  width: fit-content;
+}
+
+.stepper__btn {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--forest-deep);
+  cursor: pointer;
+}
+
+.stepper__btn:hover {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+
+.stepper__btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+.stepper__value {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* time slots */
+
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.slot {
+  padding: 9px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--forest-deep);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.slot:hover {
+  border-color: var(--brass);
+}
+
+.slot.is-active {
+  background: var(--forest-deep);
+  border-color: var(--forest-deep);
+  color: var(--brass-light);
+}
+
+/* confirmation */
+
+.confirmation {
+  padding: 40px 36px;
+}
+
+.confirmation__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(76, 122, 93, 0.14);
+  color: var(--ok);
+  margin-bottom: 20px;
+}
+
+.confirmation__summary {
+  margin: 24px 0 28px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--line);
+}
+
+.confirmation__summary li {
+  margin-bottom: 12px;
+}
+
+/* aside */
+
+.res-page__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aside-card {
+  padding: 26px 26px 24px;
+}
+
+.aside-card__list li {
+  margin-bottom: 12px;
+}
+
+.aside-card__text {
+  font-size: 13px;
+  margin: 12px 0 0;
+}
+
+@media (max-width: 960px) {
+  .res-page__grid {
+    grid-template-columns: 1fr;
+  }
+}
